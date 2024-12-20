@@ -1,0 +1,10 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}{{ user.username }} - Your Profile {% endblock %}
+
+{% block content %}
+    <h2>Welcome, {{ user.username }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Date Joined: {{ user.date_joined }}</p>
+    <p>Last Login: {{ user.last_login }}</p>
+{% endblock %}

@@ -1,0 +1,103 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Modern font for readability */
+    background-color: #000000; /* Pure black background */
+    color: #f0f0f0; /* Light gray text for readability */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #1c1c1c; /* Dark gray for navigation bar */
+    color: #f47d20; /* Bright orange for text */
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #f47d20; /* Orange border for separation */
+}
+
+nav a {
+    color: #f47d20; /* Orange for links */
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.content-container {
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 20px; /* Add spacing inside the container */
+    max-width: 800px; /* Limit the width for better readability */
+    background-color: red; /* Temporary for debugging */
+}
+
+nav a:hover {
+    color: #ff8f40; /* Lighter orange on hover */
+    text-decoration: underline;
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: #f47d20; /* Orange for all headers */
+}
+
+/* Tables and Financial Data */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+th {
+    background-color: #1c1c1c; /* Dark gray background */
+    color: #f47d20; /* Orange for table headers */
+    padding: 10px;
+    border-bottom: 1px solid #333; /* Subtle separation */
+}
+
+td {
+    background-color: #000000; /* Black background for table rows */
+    color: #f0f0f0; /* Light gray text */
+    padding: 10px;
+    border-bottom: 1px solid #333; /* Subtle row separation */
+}
+
+td.positive {
+    color: #00ff00; /* Green for positive values */
+}
+
+td.negative {
+    color: #ff0000; /* Red for negative values */
+}
+
+/* Buttons */
+button {
+    background-color: #f47d20; /* Orange for buttons */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ff8f40; /* Lighter orange */
+}
+
+/* Footer */
+footer {
+    background-color: #1c1c1c; /* Dark gray footer */
+    color: #f0f0f0; /* Light gray text */
+    text-align: center;
+    padding: 10px;
+    border-top: 2px solid #f47d20; /* Orange top border */
+}
+nav div img {
+    transition: transform 0.2s;
+}
+
+nav div img:hover {
+    transform: scale(1.1);
+}
