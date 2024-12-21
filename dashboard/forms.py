@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 class RegistrationForm(forms.ModelForm):
+
+    email = forms.EmailField(required=True)
+
     password1 = forms.CharField(
         label="Password",
         widget=forms.PasswordInput,
@@ -15,7 +18,7 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'email', 'password1', 'password2']
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -35,3 +38,9 @@ class RegistrationForm(forms.ModelForm):
         if not any(char.isdigit() for char in password):
             raise ValidationError("Password must contain at least one digit.")
         return password
+    
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email address is already in use.")
+        return email

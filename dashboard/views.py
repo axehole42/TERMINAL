@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .forms import RegistrationForm
+from django.templatetags.static import static
 
 def home(request):
     if request.user.is_authenticated:
@@ -11,10 +12,11 @@ def home(request):
         context = {
             'username': request.user.username,
             'description': 'Welcome to your customizable dashboard!',
+            'stream_url': static('dashboard/videos/phoenix-us.m3u8'),  # Replace with your stream URL
         }
         return render(request, 'dashboard/home.html', context)
     else:
-        # Handle registration form for unauthenticated users
+        # Show registration form for unauthenticated users
         if request.method == 'POST':
             form = RegistrationForm(request.POST)
             if form.is_valid():
@@ -37,8 +39,7 @@ def home(request):
             'form': form,
         }
         return render(request, 'dashboard/home.html', context)
-    
-    
+
 # Create your views here.
 def about_page(request):
     return render(request, 'dashboard/about.html')
@@ -56,7 +57,7 @@ def register(request):
             return redirect('home')  # Redirect to the home page
     else:
         form = RegistrationForm()
-    return render(request, 'dashboard/register.html', {'form': form})
+    return render(request, 'dashboard/register.html', {'form': form, 'content_container': False})
 
 def profile(request):
     return render(request, 'dashboard/profile.html')

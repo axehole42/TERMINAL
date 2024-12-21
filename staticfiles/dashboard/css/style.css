@@ -1,0 +1,207 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Modern font for readability */
+    background-color: #000000; /* Pure black background */
+    color: #f0f0f0; /* Light gray text for readability */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #1c1c1c; /* Dark gray for navigation bar */
+    color: #f47d20; /* Bright orange for text */
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #f47d20; /* Orange border for separation */
+}
+
+nav a {
+    color: #f47d20; /* Orange for links */
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.content-container {
+    padding-left: 20 px; /* Add spacing inside the container */
+}
+
+nav a:hover {
+    color: #ff8f40; /* Lighter orange on hover */
+    text-decoration: underline;
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: #f47d20; /* Orange for all headers */
+}
+
+/* Tables and Financial Data */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+th {
+    background-color: #1c1c1c; /* Dark gray background */
+    color: #f47d20; /* Orange for table headers */
+    padding: 10px;
+    border-bottom: 1px solid #333; /* Subtle separation */
+}
+
+td {
+    background-color: #000000; /* Black background for table rows */
+    color: #f0f0f0; /* Light gray text */
+    padding: 10px;
+    border-bottom: 1px solid #333; /* Subtle row separation */
+}
+
+td.positive {
+    color: #00ff00; /* Green for positive values */
+}
+
+td.negative {
+    color: #ff0000; /* Red for negative values */
+}
+
+/* Buttons */
+button {
+    background-color: #f47d20; /* Orange for buttons */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ff8f40; /* Lighter orange */
+}
+
+/* Footer */
+footer {
+    background-color: #1c1c1c; /* Dark gray footer */
+    color: #f0f0f0; /* Light gray text */
+    text-align: center;
+    padding: 10px;
+    border-top: 2px solid #f47d20; /* Orange top border */
+}
+nav div img {
+    transition: transform 0.2s;
+}
+
+nav div img:hover {
+    transform: scale(1.1);
+}
+
+/* Center the form horizontally at the top */
+.form-page-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the form */
+    padding-top: 50px; /* Add spacing from the top of the page */
+    padding-bottom: 20px; /* Optional: Space below the form */
+    margin: 0; /* Remove extra margins */
+    min-height: auto; /* Remove vertical centering behavior */
+}
+
+
+/* Form container styles */
+.form-container {
+    max-width: 350px; /* Restrict the width */
+    width: 100%; /* Allow responsiveness */
+    background-color: #1a1a1a; /* Dark background for the form */
+    padding: 20px; /* Add padding inside the form */
+    border-radius: 8px; /* Smooth rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    color: #f0f0f0; /* Light text color */
+}
+
+/* Style the labels and input fields */
+.form-group {
+    margin-bottom: 15px; /* Add spacing between fields */
+}
+
+.form-group label {
+    display: block; /* Make labels appear above input fields */
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold;
+    color: #ff8000; /* Bloomberg-inspired orange color */
+}
+
+/* Style the labels and input fields */
+.form-group input {
+    width: calc(100% - 20px); /* Slightly reduce the width for a clean look */
+    padding: 10px; /* Add padding inside input fields */
+    border: 1px solid #444; /* Subtle border */
+    border-radius: 4px; /* Smooth rounded corners */
+    background-color: #000; /* Black background for input fields */
+    color: #f0f0f0; /* Light text color */
+    margin-bottom: 10px; /* Space between inputs */
+}
+
+/* Registration button */
+.btn-submit {
+    width: 100%; /* Full width button */
+    padding: 10px; /* Add padding */
+    background-color: #ff8000; /* Bloomberg orange color */
+    color: #000; /* Black text color */
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #e67300; /* Slightly darker orange on hover */
+}
+
+/* Add spacing and alignment for the entire form */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff8000; /* Match the theme color */
+}
+/* Style for error messages */
+.error-message {
+    color: #ff4d4d; /* Bright red color for errors */
+    font-size: 14px; /* Slightly smaller than regular text */
+    margin-top: 5px; /* Add spacing above the error messages */
+}
+
+.error-message ul {
+    margin: 0; /* Remove default list margin */
+    padding: 0; /* Remove default list padding */
+    list-style: none; /* Remove default bullet points */
+}
+
+.error-message li {
+    margin-bottom: 5px; /* Add spacing between error messages */
+}
+
+.stream-container {
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+    background-color: #1a1a1a; /* Dark background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    color: #f0f0f0; /* Light text */
+}
+
+.stream-container h2 {
+    color: #ff8000; /* Bloomberg-inspired orange */
+}
+
+.video-js {
+    border: 1px solid #ff8000; /* Add an orange border */
+    border-radius: 8px; /* Rounded corners */
+    margin: 0 auto; /* Center the video player */
+}
+

@@ -3,17 +3,29 @@
 {% block title %}Home - Tsonevski Terminal{% endblock %}
 
 {% block content %}
-<div class="content-container"></div>
     {% if user.is_authenticated %}
         <h1>Welcome to {{ username }}'s Terminal</h1>
         <p>{{ description }}</p>
+
+        <!-- Draggable and Resizable Video Player -->
+        <div id="video-container" class="draggable-resizable">
+            <h2 class="drag-handle">Bloomberg Live</h2>
+            <video
+                id="live-stream-player"
+                class="video-js vjs-default-skin"
+                controls
+                preload="auto"
+                data-setup='{}'>
+                <source src="https://www.bloomberg.com/media-manifest/streams/phoenix-us.m3u8" type="application/x-mpegURL">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
     {% else %}
         <h1>{{ welcome_message }}</h1>
         <p>
-             To access the terminal's features, please 
+            To access the terminal's features, please 
             <a href="{% url 'login' %}">log in</a> or 
             <a href="{% url 'register' %}">register</a> for an account.
         </p>
     {% endif %}
-</div>
 {% endblock %}

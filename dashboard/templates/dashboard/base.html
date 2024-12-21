@@ -6,7 +6,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Tsonevski Terminal{% endblock %}</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet">
+
+    <!-- JavaScript -->
+    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize the Video.js player
+            var player = videojs('live-stream-player', {
+                autoplay: true,   // Automatically play the stream
+                muted: true,      // Mute the stream by default
+                controls: true,   // Show controls
+                fluid: true,      // Enables dynamic resizing
+            });
+
+            player.ready(function () {
+                // Disable all text tracks (CC)
+                var tracks = player.textTracks();
+                for (var i = 0; i < tracks.length; i++) {
+                    tracks[i].mode = 'disabled';
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <nav>
@@ -25,7 +50,7 @@
             <a href="/login/">Login</a> | <a href="/register/">Register</a>
         {% endif %}
     </nav>
-    <main>
+    <main class="content-container" style="padding-left: 20px;">
         {% block content %}{% endblock %}
     </main>
 </body>
