@@ -30,6 +30,35 @@
                     tracks[i].mode = 'disabled';
                 }
             });
+
+            // Enable dragging functionality
+            const container = document.getElementById('video-container');
+            const handle = document.querySelector('.drag-handle');
+
+            let isDragging = false;
+            let offsetX, offsetY;
+
+            // Start dragging
+            handle.addEventListener('mousedown', function (e) {
+                isDragging = true;
+                offsetX = e.clientX - container.offsetLeft;
+                offsetY = e.clientY - container.offsetTop;
+                container.style.cursor = 'move';
+            });
+
+            // Handle dragging
+            document.addEventListener('mousemove', function (e) {
+                if (isDragging) {
+                    container.style.left = e.clientX - offsetX + 'px';
+                    container.style.top = e.clientY - offsetY + 'px';
+                }
+            });
+
+            // Stop dragging
+            document.addEventListener('mouseup', function () {
+                isDragging = false;
+                container.style.cursor = 'default';
+            });
         });
     </script>
 </head>
