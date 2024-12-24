@@ -79,7 +79,6 @@ def profile(request):
 BLOOMBERG_RSS_FEED_URL = "https://news.google.com/rss/search?q=when:24h+allinurl:bloomberg.com&hl=en-US&gl=US&ceid=US:en"
 DOWJONES_RSS_FEED_URL = "https://feeds.content.dowjones.io/public/rss/mw_topstories"
 MARKET_PULSE_RSS_FEED_URL = "https://feeds.content.dowjones.io/public/rss/mw_marketpulse"
-REUTERS_RSS_FEED_URL = "https://rss.app/feeds/CFdRNLPWqNQpwihP.xml"
 DBB_RSS_FEED_URL = "https://www.bundesbank.de/service/rss/de/633290/feed.rss"
 ECB_USD_RSS_FEED_URL = "https://www.ecb.europa.eu/rss/fxref-usd.html"
 ECB_JPY_RSS_FEED_URL = "https://www.ecb.europa.eu/rss/fxref-jpy.html"
@@ -108,7 +107,6 @@ FEED_SOURCES = {
         BLOOMBERG_RSS_FEED_URL,
         DOWJONES_RSS_FEED_URL,
         MARKET_PULSE_RSS_FEED_URL,
-        REUTERS_RSS_FEED_URL,
         DBB_RSS_FEED_URL,
         ECB_USD_RSS_FEED_URL,
         ECB_JPY_RSS_FEED_URL,
@@ -132,7 +130,6 @@ FEED_SOURCES = {
     "Bloomberg": [BLOOMBERG_RSS_FEED_URL],
     "Dow Jones": [DOWJONES_RSS_FEED_URL],
     "Dow Jones - Market Pulse": [MARKET_PULSE_RSS_FEED_URL],
-    "Reuters": [REUTERS_RSS_FEED_URL],
     "Deutsche Bundesbank": [DBB_RSS_FEED_URL],
     "European Central Bank": [
         ECB_USD_RSS_FEED_URL,
