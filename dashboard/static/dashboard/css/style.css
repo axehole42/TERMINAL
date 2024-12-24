@@ -300,9 +300,7 @@ footer {
 
 /* Highlight text used by the RSS aggregator for keywords */
 .highlight {
-    background-color: yellow;
-    color: #000;
+    color: yellow;
     font-weight: bold;
-    padding: 2px 4px;
     border-radius: 4px;
 }

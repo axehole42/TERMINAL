@@ -91,7 +91,6 @@ DEUTSCHE_BOERSE_RSS = "https://api.boerse-frankfurt.de/v1/feeds/news.rss"
 
 IBD_INVESTING_RSS = "https://feeds.feedburner.com/InvestingRss"
 IBD_BUSINESS_RSS = "https://feeds.feedburner.com/BusinessRss"
-IBD_ECONOMY_RSS = "https://feeds.feedburner.com/EconomyRss"
 
 FED_RSS = "https://www.federalreserve.gov/feeds/press_all.xml"
 
@@ -101,6 +100,61 @@ ALPHA_RSS_3 = "https://seekingalpha.com/sector/financial.xml"
 ALPHA_RSS_4 = "https://seekingalpha.com/api/sa/combined/TSLA.xml"
 ALPHA_RSS_5 = "https://seekingalpha.com/api/sa/combined/AAPL.xml"
 ALPHA_RSS_6 = "https://seekingalpha.com/feed.xml"
+
+# US Stocks---------------------------------------------------
+
+ALPHA_RSS_7 = "https://seekingalpha.com/api/sa/combined/MSFT.xml"  # Microsoft
+ALPHA_RSS_8 = "https://seekingalpha.com/api/sa/combined/GOOGL.xml" # Alphabet (Google)
+ALPHA_RSS_9 = "https://seekingalpha.com/api/sa/combined/AMZN.xml"  # Amazon
+ALPHA_RSS_10 = "https://seekingalpha.com/api/sa/combined/AMD.xml"  # AMD
+ALPHA_RSS_11 = "https://seekingalpha.com/api/sa/combined/NVDA.xml" # NVIDIA
+ALPHA_RSS_12 = "https://seekingalpha.com/api/sa/combined/INTC.xml" # Intel
+ALPHA_RSS_13 = "https://seekingalpha.com/api/sa/combined/FB.xml"   # Meta Platforms (Facebook)
+ALPHA_RSS_14 = "https://seekingalpha.com/api/sa/combined/JPM.xml"  # JPMorgan Chase
+ALPHA_RSS_15 = "https://seekingalpha.com/api/sa/combined/GS.xml"   # Goldman Sachs
+ALPHA_RSS_16 = "https://seekingalpha.com/api/sa/combined/C.xml"    # Citigroup
+ALPHA_RSS_17 = "https://seekingalpha.com/api/sa/combined/BA.xml"   # Boeing (Defense, Aerospace)
+ALPHA_RSS_18 = "https://seekingalpha.com/api/sa/combined/LMT.xml"  # Lockheed Martin (Defense)
+ALPHA_RSS_19 = "https://seekingalpha.com/api/sa/combined/NOC.xml"  # Northrop Grumman (Defense)
+ALPHA_RSS_20 = "https://seekingalpha.com/api/sa/combined/F.xml"    # Ford (Autos)
+ALPHA_RSS_21 = "https://seekingalpha.com/api/sa/combined/GM.xml"   # General Motors (Autos)
+ALPHA_RSS_22 = "https://seekingalpha.com/api/sa/combined/TSLA.xml" # Tesla (Autos)
+ALPHA_RSS_23 = "https://seekingalpha.com/api/sa/combined/COST.xml" # Costco (Consumer)
+ALPHA_RSS_24 = "https://seekingalpha.com/api/sa/combined/WMT.xml"  # Walmart (Consumer)
+ALPHA_RSS_25 = "https://seekingalpha.com/api/sa/combined/KO.xml"   # Coca-Cola (Consumer)
+ALPHA_RSS_26 = "https://seekingalpha.com/api/sa/combined/PG.xml"   # Procter & Gamble (Consumer)
+ALPHA_RSS_27 = "https://seekingalpha.com/api/sa/combined/DD.xml"   # DuPont (Chemicals)
+ALPHA_RSS_28 = "https://seekingalpha.com/api/sa/combined/DOW.xml"  # Dow (Chemicals)
+ALPHA_RSS_29 = "https://seekingalpha.com/api/sa/combined/CLF.xml"  # Cleveland-Cliffs (Materials)
+ALPHA_RSS_30 = "https://seekingalpha.com/api/sa/combined/CVX.xml"  # Chevron (Energy)
+ALPHA_RSS_31 = "https://seekingalpha.com/api/sa/combined/XOM.xml"  # Exxon Mobil (Energy)
+ALPHA_RSS_32 = "https://seekingalpha.com/api/sa/combined/SBUX.xml" # Starbucks (Consumer)
+ALPHA_RSS_33 = "https://seekingalpha.com/api/sa/combined/MCD.xml"  # McDonald's (Consumer)
+ALPHA_RSS_34 = "https://seekingalpha.com/api/sa/combined/NKE.xml"  # Nike (Consumer)
+ALPHA_RSS_35 = "https://seekingalpha.com/api/sa/combined/HD.xml"   # Home Depot (Consumer)
+
+
+# European Stocks---------------------------------------------------
+ALPHA_RSS_34 = "https://seekingalpha.com/api/sa/combined/SAP.xml"  # SAP (Germany, Tech)
+ALPHA_RSS_35 = "https://seekingalpha.com/api/sa/combined/ASML.xml" # ASML (Netherlands, Tech)
+ALPHA_RSS_36 = "https://seekingalpha.com/api/sa/combined/UBS.xml"  # UBS (Switzerland, Banking)
+ALPHA_RSS_37 = "https://seekingalpha.com/api/sa/combined/CS.xml"   # Credit Suisse (Switzerland, Banking)
+ALPHA_RSS_38 = "https://seekingalpha.com/api/sa/combined/BARC.xml" # Barclays (UK, Banking)
+ALPHA_RSS_39 = "https://seekingalpha.com/api/sa/combined/RYAAY.xml" # Ryanair (Ireland, Consumer)
+ALPHA_RSS_40 = "https://seekingalpha.com/api/sa/combined/DAI.xml"  # Daimler (Germany, Autos)
+ALPHA_RSS_41 = "https://seekingalpha.com/api/sa/combined/BMW.xml"  # BMW (Germany, Autos)
+ALPHA_RSS_42 = "https://seekingalpha.com/api/sa/combined/VOW3.xml" # Volkswagen (Germany, Autos)
+ALPHA_RSS_43 = "https://seekingalpha.com/api/sa/combined/ORCL.xml" # Oracle (France, Consumer)
+ALPHA_RSS_44 = "https://seekingalpha.com/api/sa/combined/LVMH.xml" # LVMH (France, Consumer)
+ALPHA_RSS_45 = "https://seekingalpha.com/api/sa/combined/RNO.xml"  # Renault (France, Autos)
+ALPHA_RSS_46 = "https://seekingalpha.com/api/sa/combined/AIR.xml"  # Airbus (France, Aerospace/Defense)
+ALPHA_RSS_47 = "https://seekingalpha.com/api/sa/combined/BNP.xml"  # BNP Paribas (France, Banking)
+ALPHA_RSS_48 = "https://seekingalpha.com/api/sa/combined/ING.xml"  # ING (Netherlands, Banking)
+ALPHA_RSS_49 = "https://seekingalpha.com/api/sa/combined/GLEN.xml" # Glencore (UK, Materials)
+ALPHA_RSS_50 = "https://seekingalpha.com/api/sa/combined/BASF.xml" # BASF (Germany, Chemicals)
+ALPHA_RSS_51 = "https://seekingalpha.com/api/sa/combined/BAYN.xml" # Bayer (Germany, Chemicals)
+ALPHA_RSS_52 = "https://seekingalpha.com/api/sa/combined/SIEGY.xml" # Siemens (Germany, Industrial)
+ALPHA_RSS_53 = "https://seekingalpha.com/api/sa/combined/ADBE.xml"  # Adobe (US, Tech)
 
 FEED_SOURCES = {
     "All": [
@@ -118,14 +172,74 @@ FEED_SOURCES = {
         DEUTSCHE_BOERSE_RSS,
         IBD_INVESTING_RSS,
         IBD_BUSINESS_RSS,
-        IBD_ECONOMY_RSS,
         FED_RSS,
+        
         ALPHA_RSS_1,
         ALPHA_RSS_2,
         ALPHA_RSS_3,
         ALPHA_RSS_4,
         ALPHA_RSS_5,
-        ALPHA_RSS_6
+        ALPHA_RSS_6,
+        ALPHA_RSS_3,
+        ALPHA_RSS_4,
+        ALPHA_RSS_5,
+        ALPHA_RSS_6,
+        ALPHA_RSS_7,
+
+        #US STOCKS---------------------------------------------------
+
+        ALPHA_RSS_8,
+        ALPHA_RSS_9,
+        ALPHA_RSS_10,
+        ALPHA_RSS_11,
+        ALPHA_RSS_12,
+        ALPHA_RSS_13,
+        ALPHA_RSS_14,
+        ALPHA_RSS_15,
+        ALPHA_RSS_16,
+        ALPHA_RSS_17,
+        ALPHA_RSS_18,
+        ALPHA_RSS_19,
+        ALPHA_RSS_20,
+        ALPHA_RSS_21,
+        ALPHA_RSS_22,
+        ALPHA_RSS_23,
+        ALPHA_RSS_24,
+        ALPHA_RSS_25,
+        ALPHA_RSS_26,
+        ALPHA_RSS_27,
+        ALPHA_RSS_28,
+        ALPHA_RSS_29,
+        ALPHA_RSS_30,
+        ALPHA_RSS_31,
+        ALPHA_RSS_32,
+        ALPHA_RSS_33,
+
+        #EUROPEAN STOCKS---------------------------------------------------
+
+        ALPHA_RSS_34,
+        ALPHA_RSS_35,
+        ALPHA_RSS_36,
+        ALPHA_RSS_37,
+        ALPHA_RSS_38,
+        ALPHA_RSS_39,
+        ALPHA_RSS_40,
+        ALPHA_RSS_41,
+        ALPHA_RSS_42,
+        ALPHA_RSS_43,
+        ALPHA_RSS_44,
+        ALPHA_RSS_45,
+        ALPHA_RSS_46,
+        ALPHA_RSS_47,
+        ALPHA_RSS_48,
+        ALPHA_RSS_49,
+        ALPHA_RSS_50,
+        ALPHA_RSS_51,
+        ALPHA_RSS_52,
+        ALPHA_RSS_53
+
+
+
     ],
     "Bloomberg": [BLOOMBERG_RSS_FEED_URL],
     "Dow Jones": [DOWJONES_RSS_FEED_URL],
@@ -144,16 +258,61 @@ FEED_SOURCES = {
     "Investor's Business Insider": [
         IBD_INVESTING_RSS,
         IBD_BUSINESS_RSS,
-        IBD_ECONOMY_RSS
     ],
     "Federal Reserve": [FED_RSS],
     "Seeking Alpha": [
-        ALPHA_RSS_1,
-        ALPHA_RSS_2,
         ALPHA_RSS_3,
         ALPHA_RSS_4,
         ALPHA_RSS_5,
-        ALPHA_RSS_6
+        ALPHA_RSS_6,
+        ALPHA_RSS_7,
+        ALPHA_RSS_8,
+        ALPHA_RSS_9,
+        ALPHA_RSS_10,
+        ALPHA_RSS_11,
+        ALPHA_RSS_12,
+        ALPHA_RSS_13,
+        ALPHA_RSS_14,
+        ALPHA_RSS_15,
+        ALPHA_RSS_16,
+        ALPHA_RSS_17,
+        ALPHA_RSS_18,
+        ALPHA_RSS_19,
+        ALPHA_RSS_20,
+        ALPHA_RSS_21,
+        ALPHA_RSS_22,
+        ALPHA_RSS_23,
+        ALPHA_RSS_24,
+        ALPHA_RSS_25,
+        ALPHA_RSS_26,
+        ALPHA_RSS_27,
+        ALPHA_RSS_28,
+        ALPHA_RSS_29,
+        ALPHA_RSS_30,
+        ALPHA_RSS_31,
+        ALPHA_RSS_32,
+        ALPHA_RSS_33,
+        ALPHA_RSS_34,
+        ALPHA_RSS_35,
+        ALPHA_RSS_36,
+        ALPHA_RSS_37,
+        ALPHA_RSS_38,
+        ALPHA_RSS_39,
+        ALPHA_RSS_40,
+        ALPHA_RSS_41,
+        ALPHA_RSS_42,
+        ALPHA_RSS_43,
+        ALPHA_RSS_44,
+        ALPHA_RSS_45,
+        ALPHA_RSS_46,
+        ALPHA_RSS_47,
+        ALPHA_RSS_48,
+        ALPHA_RSS_49,
+        ALPHA_RSS_50,
+        ALPHA_RSS_51,
+        ALPHA_RSS_52,
+        ALPHA_RSS_53
+
     ],
 }
 
@@ -202,7 +361,7 @@ SOURCE_COLORS = {
     "DB": "#2F4F4F",                # Deutsche Boerse (DarkSlateGray)
     "IBD": "#FF69B4",               # Investor's Business Daily (HotPink)
     "FED": "#800000",               # Federal Reserve (Maroon)
-    "ALPHA": "#8B4513",             # Seeking Alpha (SaddleBrown)
+    "ALPHA": "#228B22",             # Seeking Alpha (SaddleBrown)
 }
 
 
