@@ -30,6 +30,14 @@ ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = '/'  # Redirect to the home page after login
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',  # can be any string
+    }
+}
+
+
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "dashboard/static"]

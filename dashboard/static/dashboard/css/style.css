@@ -23,10 +23,6 @@ nav a {
     font-weight: bold;
 }
 
-.content-container {
-    padding-left: 20 px; /* Add spacing inside the container */
-}
-
 nav a:hover {
     color: #ff8f40; /* Lighter orange on hover */
     text-decoration: underline;
@@ -91,6 +87,8 @@ footer {
     padding: 10px;
     border-top: 2px solid #f47d20; /* Orange top border */
 }
+
+/* Hover effect on user profile image in nav */
 nav div img {
     transition: transform 0.2s;
 }
@@ -108,7 +106,6 @@ nav div img:hover {
     margin: 0; /* Remove extra margins */
     min-height: auto; /* Remove vertical centering behavior */
 }
-
 
 /* Form container styles */
 .form-container {
@@ -133,7 +130,6 @@ nav div img:hover {
     color: #ff8000; /* Bloomberg-inspired orange color */
 }
 
-/* Style the labels and input fields */
 .form-group input {
     width: calc(100% - 20px); /* Slightly reduce the width for a clean look */
     padding: 10px; /* Add padding inside input fields */
@@ -164,10 +160,11 @@ nav div img:hover {
 
 /* Add spacing and alignment for the entire form */
 h2 {
-    text-align: center;
+    text-align: left;   /* Align the form title to the left */
     margin-bottom: 20px;
     color: #ff8000; /* Match the theme color */
 }
+
 /* Style for error messages */
 .error-message {
     color: #ff4d4d; /* Bright red color for errors */
@@ -185,6 +182,7 @@ h2 {
     margin-bottom: 5px; /* Add spacing between error messages */
 }
 
+/* Video Stream Container */
 .stream-container {
     position: relative;
     max-width: 800px; /* Ensures the video does not exceed the container width */
@@ -208,6 +206,8 @@ video.video-js {
     border: 1px solid #ddd; /* Optional: Add a border for styling */
     border-radius: 8px; /* Optional: Add rounded corners */
 }
+
+/* Draggable & Resizable Video Window */
 .draggable-resizable {
     position: absolute;
     top: 200px; /* Adjust to move the window down */
@@ -224,7 +224,6 @@ video.video-js {
     z-index: 1000; /* Ensure it's on top of other elements */
 }
 
-
 .drag-handle {
     background: #333; /* Dark background for the handle */
     color: #fff; /* White text for readability */
@@ -240,4 +239,70 @@ video.video-js {
     width: 100%; /* Make the video fit the container */
     height: calc(100% - 40px); /* Adjust for drag handle height */
     min-height: 360px; /* Ensure controls are always visible */
+}
+
+/* Flexbox container to ensure footer stays at the bottom */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Main content takes available space */
+.content-container {
+    flex: 1; /* Takes up remaining space in the flexbox layout */
+    min-height: 300px; /* Ensures the content area always occupies space */
+    box-sizing: border-box; /* Ensures padding doesn’t affect width/height */
+    padding-left: 20 px; /* Add spacing inside the container */
+}
+
+/* Footer styling */
+footer {
+    background-color: #1e1e1e; /* Dark gray footer */
+    color: #fff; /* Light gray text */
+    text-align: center;
+    padding: 10px;
+    border-top: 2px solid #f47d20; /* Orange top border */
+}
+
+/* RSS Widget Styles */
+.rss-widget {
+    background-color: #1c1c1c;
+    color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.rss-widget h2 {
+    color: #f47d20; /* Bright orange */
+    margin-bottom: 10px;
+}
+
+.rss-widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.rss-widget li {
+    margin-bottom: 15px;
+}
+
+.rss-widget a {
+    color: #f47d20;
+    text-decoration: none;
+}
+
+.rss-widget a:hover {
+    text-decoration: underline;
+}
+
+/* Highlight text used by the RSS aggregator for keywords */
+.highlight {
+    background-color: yellow;
+    color: #000;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 4px;
 }

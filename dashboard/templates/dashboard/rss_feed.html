@@ -1,0 +1,293 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}RSS Feeds{% endblock %}</title>
+</head>
+
+{% block content %}
+<div class="rss-widget">
+  <h2>RSS News Feed Aggregator</h2>
+
+  <!-- Last Refresh (unified format) -->
+  <p>Last Refresh:
+    <span id="last-refresh">
+      {% if last_fetch_time %}
+        {{ last_fetch_time|date:"Y-m-d H:i:s" }}
+      {% endif %}
+    </span>
+  </p>
+
+  <!-- Filter Form -->
+  <div style="margin-bottom: 10px;">
+    Keyword:
+    <input type="text" name="keyword" id="filter-keyword" value="{{ keyword }}" 
+           style="background-color: #555555; color: #FF9900; border: 1px solid #444444; padding: 1px; border-radius: 1px;" />
+
+    Source:
+    <select name="source" id="filter-source">
+      {% for s in feed_sources %}
+        <option value="{{ s }}" {% if s == selected_source %}selected{% endif %}>{{ s }}</option>
+      {% endfor %}
+    </select>
+
+    Date:
+    <select name="date" id="filter-date">
+      {% for d in unique_dates %}
+        <option value="{{ d }}" {% if d == selected_date %}selected{% endif %}>{{ d }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="button" id="apply-filters" 
+    style="background-color: #000; 
+           color: #FF9900; 
+           margin-right: 5px; 
+           border: 1px solid rgba(255, 255, 255, 0.3); 
+           border-radius: 5px; 
+           padding: 4px 8px; 
+           cursor: pointer; 
+           transition: transform 0.1s ease;" 
+    onmousedown="this.style.transform='scale(0.95)';"
+    onmouseup="this.style.transform='scale(1)';"
+    onmouseleave="this.style.transform='scale(1)';">
+    Apply
+    </button>
+
+    <button type="button" id="clear-filters" 
+        style="background-color: #000; 
+            color: #FF9900; 
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            border-radius: 5px; 
+            padding: 4px 8px; 
+            cursor: pointer; 
+            transition: transform 0.1s ease;" 
+        onmousedown="this.style.transform='scale(0.95)';"
+        onmouseup="this.style.transform='scale(1)';"
+        onmouseleave="this.style.transform='scale(1)';">
+    Clear
+    </button>
+  </div>
+
+  <!-- Source Ribbon + Reset Sources -->
+  <div style="margin-bottom: 5px;">
+    <button type="button" id="reset-sources" 
+    style="background-color: #000; 
+           color: #FF9900; 
+           padding: 4px 8px; 
+           margin-right: 5px; 
+           border: 1px solid rgba(255, 255, 255, 0.3); 
+           border-radius: 5px; 
+           cursor: pointer; 
+           transition: transform 0.1s ease;" 
+    onmousedown="this.style.transform='scale(0.95)';"
+    onmouseup="this.style.transform='scale(1)';"
+    onmouseleave="this.style.transform='scale(1)';">
+    Reset Sources
+    </button>
+    <div id="source-ribbon" style="display: inline-block; vertical-align: middle;">
+      <!-- Bubbles get rendered here by JS -->
+    </div>
+  </div>
+
+  <!-- The feed items container -->
+  <ul id="feed-entries" style="list-style:none; padding:0;">
+    {% for entry in entries %}
+      <li style="margin-bottom:5px;">
+        <!-- date/time/ticker/link on one line -->
+        <span style="color:#F0C04B;">{{ entry.date }}</span>
+        <span style="color:#F0C04B; margin-left:4px;">[{{ entry.published }}]</span>
+        <span style="color:{{ entry.source_color }}; margin-left:4px;">{{ entry.ticker }}</span>
+        <a href="{{ entry.link }}"
+           target="_blank"
+           style="margin-left:4px; color:#FF9900;"
+           class="rss-link">
+          {{ entry.title_highlighted|safe }}
+        </a>
+        <!-- dashed separator on next line -->
+        <br/>
+        <span style="color:#FF9900;">----------------------------------------</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script>
+  // 1) Keep track of read links across auto-refresh
+  const readLinks = new Set();
+
+  // Make server-rendered links turn gray when clicked
+  document.querySelectorAll(".rss-link").forEach(link => {
+    link.addEventListener("click", () => {
+      link.style.color = "gray";
+      readLinks.add(link.href);
+    });
+  });
+
+  // 2) Source Ribbon / Defaults
+  const defaultSources = [
+    "Bloomberg", "Dow Jones", "Dow Jones - Market Pulse",
+    "Reuters", "Deutsche Bundesbank", "European Central Bank",
+    "EUROSTAT", "Yahoo Finance", "Deutsche Boerse",
+    "Investor's Business Insider", "Federal Reserve", "Seeking Alpha"
+  ];
+  let enabledSources = new Set(defaultSources);
+
+  function updateSourceRibbon() {
+    const ribbon = document.getElementById("source-ribbon");
+    ribbon.innerHTML = "";
+
+    enabledSources.forEach(src => {
+      const bubble = document.createElement("div");
+      bubble.style.display = "inline-block";
+      bubble.style.backgroundColor = "gray";
+      bubble.style.color = "black";
+      bubble.style.padding = "1px 2px";
+      bubble.style.marginRight = "2px";
+      bubble.style.borderRadius = "2px";
+      bubble.style.margin = "4px 4px"; 
+
+      const srcLabel = document.createElement("span");
+      srcLabel.textContent = src;
+
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = " X";
+      removeBtn.style.marginLeft = "0px";
+      removeBtn.style.cursor = "pointer";
+      removeBtn.style.color = "#000";
+      removeBtn.style.fontSize = "10px";      // smaller text
+      removeBtn.style.padding = "4px 4px";    // less padding
+      removeBtn.style.backgroundColor = "#ccc";
+      removeBtn.addEventListener("click", () => {
+        enabledSources.delete(src);
+        updateSourceRibbon();
+        fetchFeedData();
+      });
+
+      bubble.appendChild(srcLabel);
+      bubble.appendChild(removeBtn);
+      ribbon.appendChild(bubble);
+    });
+  }
+
+  document.getElementById("reset-sources").addEventListener("click", () => {
+    enabledSources = new Set(defaultSources);
+    updateSourceRibbon();
+    fetchFeedData();
+  });
+
+  // 3) Instant Filter Logic
+  const keywordInput = document.getElementById("filter-keyword");
+  const sourceSelect = document.getElementById("filter-source");
+  const dateSelect = document.getElementById("filter-date");
+
+  keywordInput.addEventListener("input", () => fetchFeedData());
+  sourceSelect.addEventListener("change", () => fetchFeedData());
+  dateSelect.addEventListener("change", () => fetchFeedData());
+
+  document.getElementById("apply-filters").addEventListener("click", () => {
+    fetchFeedData();
+  });
+
+  document.getElementById("clear-filters").addEventListener("click", () => {
+    keywordInput.value = "";
+    sourceSelect.selectedIndex = 0; // "All"
+    dateSelect.selectedIndex = 0;   // "All Dates"
+    fetchFeedData();
+  });
+
+  // 4) Optional auto-refresh every 5 seconds
+  setInterval(fetchFeedData, 5000);
+
+  // 5) Main fetch function
+  function fetchFeedData() {
+    const source = sourceSelect.value;
+    const keyword = keywordInput.value;
+    const date = dateSelect.value;
+
+    const enabledSourcesParam = Array.from(enabledSources).join("|");
+
+    const params = new URLSearchParams({
+      source,
+      keyword,
+      date,
+      enabled_sources: enabledSourcesParam
+    });
+
+    fetch("/rss/json/?" + params.toString())
+      .then(resp => resp.json())
+      .then(data => {
+        // Update Last Refresh
+        document.getElementById("last-refresh").textContent = data.last_fetch_time;
+
+        // Clear old items
+        const feedList = document.getElementById("feed-entries");
+        feedList.innerHTML = "";
+
+        // Insert new
+        data.entries.forEach(entry => {
+          const li = document.createElement("li");
+          li.style.marginBottom = "5px";
+
+          // date/time
+          const dateSpan = document.createElement("span");
+          dateSpan.style.color = "#F0C04B";
+          dateSpan.textContent = entry.date;
+
+          const timeSpan = document.createElement("span");
+          timeSpan.style.color = "#F0C04B";
+          timeSpan.style.marginLeft = "4px";
+          timeSpan.textContent = `[${entry.published}]`;
+
+          // ticker
+          const tickerSpan = document.createElement("span");
+          tickerSpan.style.marginLeft = "4px";
+          tickerSpan.style.color = entry.source_color || "#FF9900";
+          tickerSpan.textContent = entry.ticker;
+
+          // link
+          const link = document.createElement("a");
+          link.href = entry.link;
+          link.target = "_blank";
+          link.style.marginLeft = "4px";
+          link.style.color = "#FF9900";
+          link.innerHTML = entry.title_highlighted;
+
+          // keep link gray if previously read
+          if (readLinks.has(entry.link)) {
+            link.style.color = "gray";
+          }
+
+          // on click => gray
+          link.addEventListener("click", () => {
+            link.style.color = "gray";
+            readLinks.add(entry.link);
+          });
+
+          // combine
+          li.appendChild(dateSpan);
+          li.appendChild(timeSpan);
+          li.appendChild(tickerSpan);
+          li.appendChild(link);
+
+          // dashed line
+          const sepBr = document.createElement("br");
+          const sepSpan = document.createElement("span");
+          sepSpan.style.color = "#FF9900";
+          sepSpan.textContent = "----------------------------------------";
+
+          li.appendChild(sepBr);
+          li.appendChild(sepSpan);
+
+          feedList.appendChild(li);
+        });
+      })
+      .catch(error => console.error("Error fetching feed JSON:", error));
+  }
+
+  // 6) On page load, draw the ribbon
+  updateSourceRibbon();
+</script>
+{% endblock %}
+</html>

@@ -49,8 +49,8 @@
             // Handle dragging
             document.addEventListener('mousemove', function (e) {
                 if (isDragging) {
-                    container.style.left = e.clientX - offsetX + 'px';
-                    container.style.top = e.clientY - offsetY + 'px';
+                    container.style.left = `${e.clientX - offsetX}px`;
+                    container.style.top = `${e.clientY - offsetY}px`;
                 }
             });
 
@@ -63,24 +63,47 @@
     </script>
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/about/">About</a> |
-        {% if user.is_authenticated %}
-            <div style="float: left; margin-right: 10px;">
-                <a href="/profile/">
-                    <img src="{% static 'dashboard/images/user-icon.png' %}" alt="User Profile" 
-                         style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer;">
-                </a>
-            </div>
-            <a href="/profile/">Profile</a> |
-            <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-            <a href="/login/">Login</a> | <a href="/register/">Register</a>
-        {% endif %}
-    </nav>
-    <main class="content-container" style="padding-left: 20px;">
-        {% block content %}{% endblock %}
-    </main>
+    <div class="page-container">
+        <nav>
+            <!-- Example links; add/remove as needed -->
+            <a href="/">Home</a> |
+            <a href="/about/">About</a> |
+            
+            <!-- Link to your RSS feed page, assuming 'rss_feed' is the URL name -->
+            <a href="{% url 'rss_feed' %}">RSS Feed</a> |
+
+            {% if user.is_authenticated %}
+                <div style="float: left;">
+                    <a href="/profile/">
+                        <img src="{% static 'dashboard/images/user-icon.png' %}" alt="User Profile"
+                             style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer;">
+                    </a>
+                </div>
+                <a href="/profile/">Profile</a> |
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="/login/">Login</a> | 
+                <a href="/register/">Register</a>
+            {% endif %}
+        </nav>
+
+        <main class="content-container">
+            <!-- Insert the content from child templates here -->
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            <p>&copy; {{ current_year }} Tsonevski Terminal. All rights reserved.</p>
+            <p>Accuracy of tools and data provided is not guaranteed.</p>
+        </footer>
+    </div>
+
+    <!-- Optional: A small script to dynamically set the current year. -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentYear = new Date().getFullYear();
+            document.querySelector("footer p").innerHTML = "&copy; " + currentYear + " Tsonevski Terminal. All rights reserved.";
+        });
+    </script>
 </body>
 </html>
